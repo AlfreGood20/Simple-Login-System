@@ -85,9 +85,9 @@ public class Ventana extends JFrame{
 	            JOptionPane.showMessageDialog(null, "Error: Por favor ingrese datos", "Nota", JOptionPane.INFORMATION_MESSAGE);
 	        }
 			else {
-				LogicaLogin segurar=new LogicaLogin(correo,contraseña);
-				if(segurar.comproCorreo() && segurar.comproContraseña()){
-					JOptionPane.showMessageDialog(null,"Acabas de entrar al sistema");
+				LogicaLogin credencial=new LogicaLogin(correo,contraseña);
+				if(credencial.credenciales()) {
+					JOptionPane.showMessageDialog(null,"Acabas de entrar");
 				}
 				else {
 					JOptionPane.showMessageDialog(null,"Correo y contraseña incorrectas");

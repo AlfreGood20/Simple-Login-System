@@ -6,17 +6,15 @@ public class usuario {
 	private int edad;
 	private String correo;
 	private String contraseña;
-	private long numeroTelefonico;
 	private String genero;
 	
-	public usuario(String nombre, String apellido, int edad, String correo, String contraseña,long numeroTelefonico, String genero, String area) {
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.edad = edad;
-		this.correo = correo;
-		this.contraseña = contraseña;
-		this.numeroTelefonico = numeroTelefonico;
-		this.genero = genero;
+	public usuario(String nombreSelec, String apellidoSelec, int edadSelec, String correoSelec, String contraseñaSelec,String generoSelec) {
+		this.nombre = nombreSelec;
+		this.apellido = apellidoSelec;
+		this.edad = edadSelec;
+		this.correo = correoSelec;
+		this.contraseña = contraseñaSelec;
+		this.genero = generoSelec;
 	}
 
 	public String getNombre() {
@@ -39,12 +37,14 @@ public class usuario {
 		return contraseña;
 	}
 
-	public long getNumeroTelefonico() {
-		return numeroTelefonico;
-	}
-
 	public String getGenero() {
 		return genero;
+	}
+
+	@Override
+	public String toString() {
+		return "usuario [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", correo=" + correo
+				+ ", contraseña=" + contraseña + ", genero=" + genero + "]";
 	}
 
 	

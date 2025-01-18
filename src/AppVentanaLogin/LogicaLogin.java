@@ -3,19 +3,20 @@ package AppVentanaLogin;
 public class LogicaLogin {
 	private String correo;
 	private String contraseña;
-	private final String coreoFic="FazePepinito20@gmail.com";
-	private final String contraseñaFic="fazepepito9088";
+	private final String correoFic="josealfredolopez2@gmail.com";
+	private final String contraseñaFic="Alfy20";
 	
 	public LogicaLogin(String correo,String contraseña) {
 		this.correo=correo;
 		this.contraseña=contraseña;
 	}
 	
-	public boolean contraseña() {
-		return correo==coreoFic;
+	public boolean comproContraseña() {
+		return contraseña.equals(contraseñaFic);
 	}
 	
-	public boolean correo() {
-		return contraseña==contraseñaFic;
+	public boolean comproCorreo() {
+		return correo.equals(correoFic);
 	}
 }
+

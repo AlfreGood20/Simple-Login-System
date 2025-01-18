@@ -2,6 +2,9 @@ package AppVentanaLogin;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import AppVentanaRegistro.VentanaRegistros;
 
 public class Ventana extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -72,15 +77,22 @@ public class Ventana extends JFrame{
 		JButton botonLogin=new JButton("Login");
 		botonLogin.setBounds(250,320,180, 50);
 		botonLogin.addActionListener(evento->{
-			LogicaLogin confirmacion=new LogicaLogin(campoTxtCorreo.getText(),new String(campotxtContraseña.getPassword()));
+			String correo = campoTxtCorreo.getText().trim();
+		    String contraseña = new String(campotxtContraseña.getPassword()).trim();
+		    
 			//SI EL CAMPO CORREO TIENE ESPACIO EN BLANCO O SI ESTA VACIO Y SI EL CAMPO CONTRASEÑA ESTA EN BLANCO O VACIO MANDAR ESA INFORMACION
-			if (campoTxtCorreo.getText().trim().isEmpty() || new String(campotxtContraseña.getPassword()).trim().isEmpty()) {
+			if (correo.isEmpty() || contraseña.isEmpty()) {
 	            JOptionPane.showMessageDialog(null, "Error: Por favor ingrese datos", "Nota", JOptionPane.INFORMATION_MESSAGE);
 	        }
-			else if (confirmacion.correo() && confirmacion.contraseña()){
-				JOptionPane.showMessageDialog(null,"Acabas de entrar");
+			else {
+				LogicaLogin segurar=new LogicaLogin(correo,contraseña);
+				if(segurar.comproCorreo() && segurar.comproContraseña()){
+					JOptionPane.showMessageDialog(null,"Acabas de entrar al sistema");
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Correo y contraseña incorrectas");
+				}
 			}
-			
 		});
 		panel.add(botonLogin);
 	}
@@ -92,6 +104,16 @@ public class Ventana extends JFrame{
         enlace.setCursor(new Cursor(Cursor.HAND_CURSOR));  // Cambiar el cursor al pasar sobre el enlace
         enlace.setFont(new Font("Arial", Font.PLAIN,15));  // Fuente del enlace
         panelUni.add(enlace);
+        
+        enlace.addMouseListener(new MouseAdapter() {
+        	
+        	@Override
+            public void mouseClicked(MouseEvent e) {
+        		setVisible(false);
+                VentanaRegistros creaCuenta=new VentanaRegistros(); // CREADO CONSTRUCTOR DONDE APRETE EL BOTON 
+                creaCuenta.setVisible(true);						// SE  HABAR LA VENTANA DE REGISTROS
+            }
+        });
 	}
 	
 }

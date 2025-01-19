@@ -82,7 +82,7 @@ public class Ventana extends JFrame{
 		    
 			//SI EL CAMPO CORREO TIENE ESPACIO EN BLANCO O SI ESTA VACIO Y SI EL CAMPO CONTRASEÑA ESTA EN BLANCO O VACIO MANDAR ESA INFORMACION
 			if (correo.isEmpty() || contraseña.isEmpty()) {
-	            JOptionPane.showMessageDialog(null, "Error: Por favor ingrese datos", "Nota", JOptionPane.INFORMATION_MESSAGE);
+	            JOptionPane.showMessageDialog(null, "Por favor ingrese datos", "Nota", JOptionPane.INFORMATION_MESSAGE);
 	        }
 			else {
 				LogicaLogin credencial=new LogicaLogin(correo,contraseña);
@@ -110,8 +110,8 @@ public class Ventana extends JFrame{
         	@Override
             public void mouseClicked(MouseEvent e) {
         		setVisible(false);
-                VentanaRegistros creaCuenta=new VentanaRegistros(); // CREADO CONSTRUCTOR DONDE APRETE EL BOTON 
-                creaCuenta.setVisible(true);						// SE  HABAR LA VENTANA DE REGISTROS
+                new VentanaRegistros().setVisible(true);; // CREADO CONSTRUCTOR DONDE APRETE EL BOTON 
+					// SE  HABAR LA VENTANA DE REGISTROS
             }
         });
 	}

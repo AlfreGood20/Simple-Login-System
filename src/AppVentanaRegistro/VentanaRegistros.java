@@ -90,29 +90,12 @@ public class VentanaRegistros extends JFrame{
     }
 	
 	private void etiquetas() {
-		JLabel etiquetaNombre=new JLabel ("Nombre");
-		etiquetaNombre.setBounds(120,-5, 100, 90);
-		panelUni.add(etiquetaNombre);
-		
-		JLabel etiquetaApellido=new JLabel ("Apellido");
-		etiquetaApellido.setBounds(410,-5,100,90);
-		panelUni.add(etiquetaApellido);
-		
-		JLabel etiquetaGenero=new JLabel("Selecciona Genero");
-		etiquetaGenero.setBounds(640,-5,150,90);
-		panelUni.add(etiquetaGenero);
-		
-		JLabel etiquetaEdad=new JLabel("Edad");
-		etiquetaEdad.setBounds(85,95,100, 90);
-		panelUni.add(etiquetaEdad);
-		
-		JLabel etiquetaCorreo=new JLabel("Correo");
-		etiquetaCorreo.setBounds(365,95,100,90);
-		panelUni.add(etiquetaCorreo);
-		
-		JLabel etiquetaContra=new JLabel("Crea una contraseña");
-		etiquetaContra.setBounds(640,95,150,90);
-		panelUni.add(etiquetaContra);
+		panelUni.add(MetodoSueltos.crearEtiqueta("Nombre", 120, -5, 100, 90));
+        panelUni.add(MetodoSueltos.crearEtiqueta("Apellido", 410, -5, 100, 90));
+        panelUni.add(MetodoSueltos.crearEtiqueta("Selecciona Género", 640, -5, 150, 90));
+        panelUni.add(MetodoSueltos.crearEtiqueta("Edad", 85, 95, 100, 90));
+        panelUni.add(MetodoSueltos.crearEtiqueta("Correo", 365, 95, 100, 90));
+        panelUni.add(MetodoSueltos.crearEtiqueta("Crea una contraseña", 640, 95, 150, 90));
 		
 		JLabel etiquetaNota=new JLabel("<html>Nota: Ingrese correctamente los datos para no tener problemas.<br>"
 		        + "En la contraseña por favor de ingresar al menos 8 caracteres sin espacios.</html>");
@@ -138,7 +121,7 @@ public class VentanaRegistros extends JFrame{
 			int edadSelec = (int) edad.getValue();
 			boolean longiCorrecto=(contraseñaSelec.length()>8);
 			
-			if(!longiCorrecto) {
+			if(!longiCorrecto || generoSelec!="Elegir genero:") {
 				JOptionPane.showMessageDialog(null,"Por favor de tener una contraseña mayor a 8 caracteres");
 				if(nombreSelec.equals("") || apellidoSelec.equals("") || correoSelec.equals("@gmail.com")||contraseñaSelec.equals("")  || generoSelec.equals("Elegir genero:")){
 				JOptionPane.showMessageDialog(null,"Por favor rellena el formulario correctamente","Datos incorectos",JOptionPane.ERROR_MESSAGE);
@@ -148,10 +131,9 @@ public class VentanaRegistros extends JFrame{
 				usuario persona = new usuario(nombreSelec,apellidoSelec,edadSelec,correoSelec,contraseñaSelec,generoSelec);
 				baseDeDato base = new baseDeDato();
 				base.agregarUsuario(persona);
-				JOptionPane.showMessageDialog(null,"Registro exitoso","Nice",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this,"Registro exitoso","Nice",JOptionPane.INFORMATION_MESSAGE);
 				setVisible(false);
-                Ventana ventanaLogin=new Ventana();
-                ventanaLogin.setVisible(true);
+                new Ventana().setVisible(true);
 			}
 		});
 	}
@@ -169,8 +151,7 @@ public class VentanaRegistros extends JFrame{
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		setVisible(false);
-                Ventana ventanaLogin=new Ventana();// CREADO CONSTRUCTOR DONDE APRETE EL BOTON 
-                ventanaLogin.setVisible(true);						// SE  HABAR LA VENTANA DE LOGIN
+                new Ventana().setVisible(true);;// CREADO CONSTRUCTOR DONDE APRETE EL BOTON Y SE VEA VISIBLE LA VENTANA LOGIN 
             }
         });
 	}

@@ -121,7 +121,7 @@ public class VentanaRegistros extends JFrame{
 			int edadSelec = (int) edad.getValue();
 			boolean longiCorrecto=(contraseñaSelec.length()>8);
 			
-			if(!longiCorrecto || generoSelec!="Elegir genero:") {
+			if(!longiCorrecto) {
 				JOptionPane.showMessageDialog(null,"Por favor de tener una contraseña mayor a 8 caracteres");
 				if(nombreSelec.equals("") || apellidoSelec.equals("") || correoSelec.equals("@gmail.com")||contraseñaSelec.equals("")  || generoSelec.equals("Elegir genero:")){
 				JOptionPane.showMessageDialog(null,"Por favor rellena el formulario correctamente","Datos incorectos",JOptionPane.ERROR_MESSAGE);
